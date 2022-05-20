@@ -19,7 +19,7 @@ function SignupPage(props) {
 
         axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
             .then((response) => {
-                navigate('/dashboard');
+                navigate('/login');
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
@@ -31,7 +31,8 @@ function SignupPage(props) {
 
     return (
         <div className="SignupPage">
-            <h1>Register</h1>
+            <br />
+            <h1>Signup</h1>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
