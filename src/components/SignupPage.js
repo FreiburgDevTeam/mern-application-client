@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/auth.context"
 
 
 function SignupPage(props) {
     const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     const navigate = useNavigate();
+    const { storeToken, authenticateUser } = useContext(AuthContext);
 
     const handleSignupSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +20,11 @@ function SignupPage(props) {
 
         axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
             .then((response) => {
+                const jwt = response.data.authToken;
+                console.log('Login was sucessful. JWT token: ', jwt);
+                
+                storeToken(jwt);
+                authenticateUser();
                 navigate('/dashboard');
             })
             .catch((error) => {
