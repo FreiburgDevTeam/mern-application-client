@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import { AuthContext } from "../context/auth.context"
+// import { AuthContext } from "../context/auth.context"
 
 function LoginPage(props) {
     const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ function LoginPage(props) {
 
     const navigate = useNavigate();
 
-    const { storeToken, authenticateUser } = useContext(AuthContext);
+    // const { storeToken, authenticateUser } = useContext(AuthContext);
 
 
     const handleLoginSubmit = (e) => {
@@ -25,8 +25,8 @@ function LoginPage(props) {
                 const jwt = response.data.authToken;
                 console.log('Login was sucessful. JWT token: ', jwt);
 
-                storeToken(jwt);
-                authenticateUser();
+                // storeToken(jwt);
+                // authenticateUser();
                 navigate('/');
             })
             .catch((error) => {
@@ -49,10 +49,10 @@ function LoginPage(props) {
                     name="email"
                     value={email}
                     required={true}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)} 
                 />
 
-                <label>Password:</label>
+                <br /><label>Password:</label>
                 <input
                     type="password"
                     name="password"
@@ -60,13 +60,13 @@ function LoginPage(props) {
                     required={true}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-
+                    <br/>
                 <button type="submit">Login</button>
             </form>
 
 
-            <p>Don't have an account yet?</p>
-            <Link to={"/signup"}> Sign Up</Link>
+            <p>Don't have an account? <Link to={"/signup"}> Sign up now</Link></p>
+           
 
         </div>
     )

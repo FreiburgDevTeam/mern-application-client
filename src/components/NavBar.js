@@ -3,10 +3,12 @@ import { NavLink } from "react-router-dom";
 
 function NavBar () {
 
+    // const { user } = useContext(AuthContext);
     
     return (
         <div className="sidebar">
             <h1>BudgetManager</h1>
+            {/* <p>Welcome {user.username}</p> */}
 
             <div>
             <h3>Dashboard</h3>
