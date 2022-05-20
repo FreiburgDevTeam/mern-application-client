@@ -16,7 +16,7 @@ function NavBar () {
 
             <div>
             <h3>Statement</h3>
-            <NavLink to="#">+New</NavLink>
+            <NavLink to="statements/newStatement">+New</NavLink>
             </div>
 
 
