@@ -6,16 +6,9 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
     const { isLoggedIn, isLoading, user, logOutUser } = useContext(AuthContext);
 
-<<<<<<< HEAD
     return (
         <div className="sidebar">
             <h1>BudgetManager</h1>
-            {!isLoggedIn &&
-                <>
-                    <NavLink to="/signup">Register</NavLink> |
-                    <NavLink to="/login">Login</NavLink>
-                </>
-            }
             {isLoggedIn &&
                 <>
                     <h3>Welcome, {user.username}!</h3>

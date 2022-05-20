@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 function SignupPage(props) {
-    const [userName, setUserName] = useState("");
+    const [username, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,7 +15,7 @@ function SignupPage(props) {
     const handleSignupSubmit = (e) => {
         e.preventDefault();
         
-        const requestBody = { userName, email, password };
+        const requestBody = { username, email, password };
 
         axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
             .then((response) => {
@@ -40,7 +40,7 @@ function SignupPage(props) {
                 <input
                     type="text"
                     name="username"
-                    value={userName}
+                    value={username}
                     required={true}
                     onChange={(e) => setUserName(e.target.value)}
                 />
