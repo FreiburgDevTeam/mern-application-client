@@ -1,6 +1,7 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Dashboard from './components/Dashboard';
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
 
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
           <NavBar />
          
-          <LandingPage />
+          <Dashboard />
 
 
           <Routes>
