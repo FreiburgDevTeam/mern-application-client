@@ -44,7 +44,7 @@ function SignupPage(props) {
                     required={true}
                     onChange={(e) => setUserName(e.target.value)}
                 />
-
+                <br />
                 <label>Email:</label>
                 <input
                     type="email"
@@ -53,7 +53,7 @@ function SignupPage(props) {
                     required={true}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-
+                <br />
                 <label>Password:</label>
                 <input
                     type="password"
@@ -64,11 +64,11 @@ function SignupPage(props) {
                 />
 
 
-                <button type="submit">Sign Up</button>
+                <br/><button type="submit">Sign Up</button>
             </form>
 
-            <p>Already have account?</p>
-            <Link to={"/login"}> Login</Link>
+            <p>Already have an account? <Link to={"/login"}> Login</Link></p>
+        
         </div>
     )
 }

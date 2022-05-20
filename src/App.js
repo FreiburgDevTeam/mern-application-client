@@ -12,20 +12,22 @@ import UserProfile from './components/UserProfile';
 
 function App() {
 
-  const { isLoggedIn } = useContext(AuthContext);
+  // const { isLoggedIn } = useContext(AuthContext);
 
 
   return (
     <div className="App">
-          <NavBar />
 
-          {!isLoggedIn &&
+      {/* {isLoggedIn && <NavBar />} */}
+         <NavBar />
+      <Routes>
+          {/* {!isLoggedIn && */}
           <>
           <Route path="/signup" element={ <SignupPage /> } />
           <Route path="/login" element={ <LoginPage /> } />
           </>
-          }
-          <Routes>
+          {/* } */}
+          
 
           <Route path='/' element={<LandingPage />} />
           <Route path='/dashboard' element={<Dashboard />} />
