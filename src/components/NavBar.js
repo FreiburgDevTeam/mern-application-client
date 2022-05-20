@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
     const { isLoggedIn, isLoading, user, logOutUser } = useContext(AuthContext);
 
+<<<<<<< HEAD
     return (
         <div className="sidebar">
             <h1>BudgetManager</h1>
@@ -17,7 +18,7 @@ function NavBar() {
             }
             {isLoggedIn &&
                 <>
-                    <h3>Welcome, {user.email}!</h3>
+                    <h3>Welcome, {user.username}!</h3>
                     <button onClick={logOutUser}>Logout</button>
 
                     <div>
@@ -31,10 +32,6 @@ function NavBar() {
                     </div>
                 </>
             }
-
-
-
-
         </div>
     )
 }
