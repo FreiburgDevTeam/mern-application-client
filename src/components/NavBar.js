@@ -9,11 +9,12 @@ function NavBar() {
     return (
         <div className="sidebar">
             <h1>BudgetManager</h1>
-            {isLoggedIn &&
+            {isLoggedIn && 
                 <>
                     <h3>Welcome, {user.username}!</h3>
                     <button onClick={logOutUser}>Logout</button>
-
+                    </>
+                    }
                     <div>
                         <NavLink to="/dashboard">Dashboard</NavLink> <br />
                         <NavLink to="/userprofile">User Profile</NavLink> <br />
@@ -23,8 +24,8 @@ function NavBar() {
                         <NavLink to="/statements">Statements</NavLink> <br />
                         <NavLink to="/statements/create">+New</NavLink>
                     </div>
-                </>
-            }
+                
+            
         </div>
     )
 }

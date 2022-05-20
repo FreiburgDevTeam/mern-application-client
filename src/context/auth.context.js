@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const AuthContext = React.createContext();
 
@@ -7,6 +9,8 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     authenticateUser();
@@ -29,6 +33,7 @@ function AuthProviderWrapper(props) {
         .then((response) => {
           // If the server verifies that JWT token is valid  
           const user = response.data;
+          console.log(user,'<--- from token')
           // Update state variables        
           setIsLoggedIn(true);
           setIsLoading(false);
@@ -46,6 +51,7 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
+
     }
   }
 
@@ -56,6 +62,7 @@ function AuthProviderWrapper(props) {
   const logOutUser = () => {   
     removeToken();
     authenticateUser();
+    navigate("/login");
   }
 
   return (
