@@ -9,7 +9,7 @@ function StatementList(props) {
                             ||
                     <h5>{e.title}</h5>
                     <p>{e.amount}</p>
-                    <p>{e.type}</p> 
+                    <p>{e.type}</p>
                 </div>
             )
         })
