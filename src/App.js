@@ -12,7 +12,7 @@ import { AuthContext } from './context/auth.context';
 
 function App() {
 
-  const { isLoggedIn } = useContext(AuthContext); 
+  const { isLoggedIn, user } = useContext(AuthContext); 
 
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path='/' element={isLoggedIn ? <Dashboard /> : <LandingPage />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/userprofile' element={<UserProfile />} />
+        <Route path='/userprofile' element={<UserProfile  user={user}/>} />
         <Route path='/statements/create' element={<NewStatement />} />
         <Route path='/statements/:id/details' element={<StatementDetails />} />
       </Routes>

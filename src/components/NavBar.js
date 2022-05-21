@@ -4,13 +4,17 @@ import { NavLink } from "react-router-dom";
 
 
 function NavBar() {
-    const { logOutUser } = useContext(AuthContext);
+    const { logOutUser, user } = useContext(AuthContext);
 
     return (
         <div className="sidebar">
             <h1>BudgetManager</h1>
             <>
-                <h3>Welcome!</h3>
+                {user === null 
+                ? <p>Loading...</p>
+                : <h3>Welcome, {user.username}</h3>
+                }
+                
                 <button onClick={logOutUser}>Logout</button>
 
                 <div>

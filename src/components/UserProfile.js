@@ -1,9 +1,30 @@
-function UserProfile () {
 
+import NavBar from "./NavBar";
+
+function UserProfile (props) {
+    
+
+    const userDetails = () => {
+            return (
+                <div>
+                    <p>Username: {props.user.username}</p> 
+                    <p>E-Mail: {props.user.email}</p>
+                </div>
+            )
+    }
 
     return (
         <div>
-            <h1>This is User Profile</h1>
+            <NavBar/>
+            <h1>Account details</h1>
+
+            { props.user == null
+                    ? <p>loading...</p>
+                    : userDetails()
+                  
+                }
+
+    
         </div>
     )
 }
