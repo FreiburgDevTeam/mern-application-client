@@ -1,5 +1,7 @@
 
+import Spinner  from "reactjs-simple-spinner";
 import NavBar from "./NavBar";
+import React, { Component } from 'react';
 
 function UserProfile (props) {
     
@@ -19,7 +21,12 @@ function UserProfile (props) {
             <h1>Account details</h1>
 
             { props.user == null
-                    ? <p>loading...</p>
+                    ? <Spinner 
+                    size="big" 
+                    message="Loading..." 
+                    lineFgColor="#26ec0c"
+                    line-bg-color="#1240be62"
+                    speed={1}/>
                     : userDetails()
                   
                 }
