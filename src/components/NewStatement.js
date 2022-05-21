@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 
 function NewStatement() {
     const [title, setTitle] = useState("");
@@ -35,13 +36,14 @@ function NewStatement() {
             )
             .then(response => {
                 // props.callbackUpdateStatementList();
-                navigate("/statements");
+                navigate("/dashboard");
             })
             .catch(e => console.log("error creating statement...", e));
     }
 
     return (
         <div>
+            <NavBar/>
             <h2>New Statement</h2>
             <br />
             <form onSubmit={handleSubmit}>
