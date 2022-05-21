@@ -7,6 +7,7 @@ import LoginPage from './components/LoginPage';
 import NewStatement from './components/NewStatement';
 import SignupPage from './components/SignupPage';
 import StatementDetails from './components/StatementDetails';
+import StatementList from './components/StatementList';
 import UserProfile from './components/UserProfile';
 import { AuthContext } from './context/auth.context';
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path='/' element={isLoggedIn ? <Dashboard /> : <LandingPage />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/statements' element={<StatementList />} />
         <Route path='/userprofile' element={<UserProfile  user={user}/>} />
         <Route path='/statements/create' element={<NewStatement />} />
         <Route path='/statements/:id/details' element={<StatementDetails />} />

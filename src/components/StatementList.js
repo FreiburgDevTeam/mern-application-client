@@ -1,33 +1,35 @@
-import Spinner  from "reactjs-simple-spinner";
+import Spinner from "reactjs-simple-spinner";
+import { DataContext } from "../context/data.context";
+import { useContext } from "react";
+import NavBar from "./NavBar";
 
-function StatementList(props) {
+function StatementList() {
+    const { statements } = useContext(DataContext);
 
     const renderStatements = () => {
-        const list = props.statements.map ( (e) => {
+        const list = statements.map((e) => {
             return (
                 <div key={e._id}>
-                            ||
+                    ||
                     <h5>{e.title}</h5>
                     <p>{e.amount}</p>
-                    <p>{e.type}</p> 
+                    <p>{e.type}</p>
                 </div>
             )
         })
         return list;
     }
 
-
-    return(
+    return (
         <>
+            <NavBar />
             <h1>This is StatementList Component</h1>
             <div>
-                {props.statements === null
+                {statements === null
                     ? <Spinner />
                     : renderStatements()
                 }
-
             </div>
-
         </>
     )
 }
