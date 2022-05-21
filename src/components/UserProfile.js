@@ -1,7 +1,7 @@
 
 import Spinner  from "reactjs-simple-spinner";
 import NavBar from "./NavBar";
-import React, { Component } from 'react';
+import React from 'react';
 
 function UserProfile (props) {
     
