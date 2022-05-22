@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/data.context";
 import NavBar from "./NavBar";
 
 function NewStatement() {
+    const {updateData} = useContext(DataContext);
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [description, setDescription] = useState("");
@@ -35,7 +37,7 @@ function NewStatement() {
             { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             .then(response => {
-                // props.callbackUpdateStatementList();
+                updateData();
                 navigate("/dashboard");
             })
             .catch(e => console.log("error creating statement...", e));

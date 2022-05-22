@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .sidebar {
   height: 100%;
   width: 200px;
@@ -20,17 +21,24 @@ code {
   padding-top: 40px;
   background-color: rgba(15, 27, 190, 0.356);
   font-size: 25px;
-  }
-  .sidebar div {
-    padding: 8px;
-    font-size: 20px;
-    display: block;
-    }
-    
-    .body-text {
-    margin-left: 150px;
-    font-size: 18px;
-    }
-    .App {
-      text-align: center;
-    }
+}
+
+.sidebar div {
+  padding: 8px;
+  font-size: 20px;
+  display: block;
+}
+
+.body-text {
+  margin-left: 150px;
+  font-size: 18px;
+}
+
+.App {
+  text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
+}

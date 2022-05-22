@@ -1,37 +1,35 @@
 
-import Spinner  from "reactjs-simple-spinner";
+import Spinner from "reactjs-simple-spinner";
 import NavBar from "./NavBar";
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from "../context/auth.context";
 
-function UserProfile (props) {
-    
+function UserProfile() {
+    const { user } = useContext(AuthContext);
 
     const userDetails = () => {
-            return (
-                <div>
-                    <p>Username: {props.user.username}</p> 
-                    <p>E-Mail: {props.user.email}</p>
-                </div>
-            )
+        return (
+            <div>
+                <p>Username: {user.username}</p>
+                <p>E-Mail: {user.email}</p>
+            </div>
+        )
     }
 
     return (
         <div>
-            <NavBar/>
+            <NavBar />
             <h1>Account details</h1>
-
-            { props.user == null
-                    ? <Spinner 
-                    size="big" 
-                    message="Loading..." 
+            {!user
+                ? <Spinner
+                    size="big"
+                    message="Loading..."
                     lineFgColor="#26ec0c"
                     line-bg-color="#1240be62"
-                    speed={1}/>
-                    : userDetails()
-                  
-                }
+                    speed={1} />
+                : userDetails()
 
-    
+            }
         </div>
     )
 }
