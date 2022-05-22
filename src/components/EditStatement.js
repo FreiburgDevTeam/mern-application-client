@@ -2,21 +2,31 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
+import { DataContext } from "../context/data.context";
+import { useContext } from "react";
 
 
 
 function EditStatement () {
-    const [title, setTitle] = useState("");
-    const [amount, setAmount] = useState("");
-    const [description, setDescription] = useState("");
-    const [type, setType] = useState("");
-    const [regularity, setRegularity] = useState("");
-    const [startDate, setStartDate] = useState("");
-    const [category, setCategory] = useState("");
+    const { statements, updateData } = useContext(DataContext);
+    const {statementId} = useParams();
+   
 
+    const statementEdit = statements.find(statement => statement._id == statementId);    
+   
+    const [title, setTitle] = useState(statementEdit.title);
+    const [amount, setAmount] = useState(statementEdit.amount);
+    const [description, setDescription] = useState(statementEdit.description);
+    const [type, setType] = useState(statementEdit.type);
+    const [regularity, setRegularity] = useState(statementEdit.regularity);
+    const [startDate, setStartDate] = useState(statementEdit.startDate);
+    const [category, setCategory] = useState(statementEdit.category);
+    
+    
+    
     const navigate = useNavigate();
 
-    const {statementId} = useParams();
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,10 +43,11 @@ function EditStatement () {
 
         const storedToken = localStorage.getItem('authToken');
 
-        axios.put(`${process.env.REACT_APP_API_URL}/statements/${statementId}/edit`, newDetails,
+        axios.put(`${process.env.REACT_APP_API_URL}/statements/${statementId}`, newDetails,
         { headers: { Authorization: `Bearer ${storedToken}` } } )
             .then(response => {
                 console.log('update response', response)
+                updateData()
                 navigate("/dashboard");
             })
             .catch(e => console.log("error updating statement...", e));
@@ -49,6 +60,7 @@ function EditStatement () {
         <div className="App">
         <NavBar/>
         <h2>Edit Statement</h2>
+        
         <br />
         <form onSubmit={handleSubmit}>
             <label htmlFor="title">Title:</label><br />
