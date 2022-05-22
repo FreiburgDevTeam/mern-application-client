@@ -1,29 +1,29 @@
 import axios from "axios";
-import { createContext, useState, useEffect, useContext } from "react";
-import { AuthContext } from "./auth.context";
+import { createContext, useState, useEffect } from "react";
 
 const DataContext = createContext();
 
-function DataProviderWrapper (props) {
-    const {isLoggedIn} = useContext(AuthContext);
+function DataProviderWrapper(props) {
     const [statements, setStatements] = useState(null);
 
     useEffect(() => {
-        if (isLoggedIn){
+        updateData()
+    }, [])
+
+    const updateData = () => {
         const storedToken = localStorage.getItem("authToken");
         axios.get(`${process.env.REACT_APP_API_URL}/statements`,
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
             .then(response => {
-    
+
                 setStatements(response.data)
             })
-            .catch(e => console.log("error getting projects from API...", e))
-        }
-    },[statements, isLoggedIn])
-    
+            .catch(e => console.log("error getting projects from API...", e));
+    }
+
     return (
-        <DataContext.Provider value={{ statements, setStatements }}>
+        <DataContext.Provider value={{ statements, setStatements, updateData }}>
             {props.children}
         </DataContext.Provider>
     )
