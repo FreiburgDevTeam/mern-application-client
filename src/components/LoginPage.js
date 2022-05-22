@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
+import { DataContext } from "../context/data.context";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ function LoginPage() {
     const navigate = useNavigate();
 
     const { storeToken, authenticateUser } = useContext(AuthContext);
+    const { updateData } = useContext(DataContext);
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ function LoginPage() {
                 const jwt = response.data.authToken;
                 storeToken(jwt);
                 authenticateUser();
+                updateData();
                 navigate('/dashboard');
             })
             .catch((error) => {
