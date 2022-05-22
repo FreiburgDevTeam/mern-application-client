@@ -1,33 +1,28 @@
-import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import EditStatement from './components/EditStatement';
+import IsPrivate from './components/IsPrivat';
 import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
 import NewStatement from './components/NewStatement';
 import SignupPage from './components/SignupPage';
-import StatementDetails from './components/StatementDetails';
 import StatementList from './components/StatementList';
 import UserProfile from './components/UserProfile';
-import { AuthContext } from './context/auth.context';
 
 function App() {
-
-  const { isLoggedIn, user } = useContext(AuthContext); 
 
   return (
     <div className="App">
       <Routes>
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path='/' element={isLoggedIn ? <Dashboard /> : <LandingPage />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/statements' element={<StatementList />} />
-        <Route path='/userprofile' element={<UserProfile  user={user}/>} />
-        <Route path='/statements/create' element={<NewStatement />} />
-        <Route path='/statements/:id/edit' element={<EditStatement />} />
-        <Route path='/statements/:id/details' element={<StatementDetails />} />
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/dashboard' element={<IsPrivate><Dashboard /></IsPrivate>} />
+        <Route path='/statements' element={<IsPrivate><StatementList /></IsPrivate>} />
+        <Route path='/userprofile' element={<IsPrivate><UserProfile /></IsPrivate>} />
+        <Route path='/statements/create' element={<IsPrivate><NewStatement /></IsPrivate>} />
+        <Route path='/statements/:id/edit' element={<IsPrivate><EditStatement /></IsPrivate>} />
       </Routes>
     </div>
   );
