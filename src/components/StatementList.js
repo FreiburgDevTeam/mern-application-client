@@ -4,7 +4,7 @@ import { LayoutGroup, motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
-
+import moment from "moment";
 
 const Content = ({ content }) => {
     const { updateData } = useContext(DataContext);
@@ -14,8 +14,8 @@ const Content = ({ content }) => {
         const storedToken = localStorage.getItem('authToken');
         //send delete request with token to API
         axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } })
-            .then(() => { 
+            { headers: { Authorization: `Bearer ${storedToken}` } })
+            .then(() => {
                 updateData();
             })
             .catch((err) => console.log(err));
@@ -44,7 +44,8 @@ const Content = ({ content }) => {
 const Item = ({ content }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => setIsOpen(!isOpen);
-
+    const startDate = new Date(content.startDate);
+    const formattedDate = moment(startDate).format('MM/DD/YYYY');
     let options;
     isOpen ? options = " - Less" : options = "+ More"
 
@@ -61,7 +62,7 @@ const Item = ({ content }) => {
                     <div>
                         <h2>{content.title}</h2>
                         <h2>{content.amount}</h2>
-                        <p>{content.startDate}</p>
+                        <p>{formattedDate}</p>
                     </div>
                     <Link to="#" onClick={toggleOpen}>{options}</Link><br />
                 </div>
@@ -82,13 +83,22 @@ function StatementList() {
             <LayoutGroup>
                 <div className="StatementList">
                     {
-                        statements?.map((item, index) => {
-                            return (
-                                <div key={index} >
-                                    <Item content={item} />
-                                </div>
+                        statements === null ?
+                            <p>Your statements list is empty. Please add a <Link to={"/statements/create"}>New Statement</Link> to continue.<br /></p>
+                            :
+                            (
+                                <>
+                                    <p>{statements.length} statements found</p>
+                                    <br />
+                                    {statements?.map((item, index) => {
+                                        return (
+                                            <div key={index} >
+                                                <Item content={item} />
+                                            </div>
+                                        )
+                                    })}
+                                </>
                             )
-                        })
                     }
                 </div>
             </LayoutGroup>
