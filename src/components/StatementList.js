@@ -45,7 +45,7 @@ const Item = ({ content }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggleOpen = () => setIsOpen(!isOpen);
     const startDate = new Date(content.startDate);
-    const formattedDate = moment(startDate).format('MM/DD/YYYY');
+    const formattedDate = moment(startDate).format('DD/MM/YYYY');
     let options;
     isOpen ? options = " - Less" : options = "+ More"
 
