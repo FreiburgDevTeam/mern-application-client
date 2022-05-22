@@ -3,8 +3,23 @@ import { DataContext } from "../context/data.context";
 import { LayoutGroup, motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import axios from "axios";
+
 
 const Content = ({ content }) => {
+    const { updateData } = useContext(DataContext);
+    const statementId = content._id;
+
+    const handleDelete = () => {
+        const storedToken = localStorage.getItem('authToken');
+        //send delete request with token to API
+        axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
+            .then(() => { 
+                updateData();
+            })
+            .catch((err) => console.log(err));
+    };
 
     return (
         <motion.div
@@ -20,7 +35,7 @@ const Content = ({ content }) => {
             </div>
             <div>
                 <Link to={`/statements/${content._id}/edit`}>Edit</Link><br />
-                <Link to={`/statements/${content._id}/delete`}>Delete</Link><br />
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </motion.div>
     );
