@@ -22,7 +22,7 @@ function App() {
         <Route path='/statements' element={<IsPrivate><StatementList /></IsPrivate>} />
         <Route path='/userprofile' element={<IsPrivate><UserProfile /></IsPrivate>} />
         <Route path='/statements/create' element={<IsPrivate><NewStatement /></IsPrivate>} />
-        <Route path='/statements/:id/edit' element={<IsPrivate><EditStatement /></IsPrivate>} />
+        <Route path='/statements/:statementId/edit' element={<IsPrivate><EditStatement /></IsPrivate>} />
       </Routes>
     </div>
   );
