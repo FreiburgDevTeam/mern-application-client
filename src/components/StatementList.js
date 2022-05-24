@@ -81,6 +81,12 @@ function StatementList() {
             <NavBar />
             <h1>Statement List</h1>
             <LayoutGroup>
+                <form>
+                    <select>
+                        <option>Income</option>
+                        <option>Expense</option>
+                    </select>
+                </form>
                 <div className="StatementList">
                     {
                         statements === null ?

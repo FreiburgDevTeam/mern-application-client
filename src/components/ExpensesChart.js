@@ -72,7 +72,6 @@ function ExpensesChart() {
 
 
     const totalArr = Object.values(totalExpenses)
-    console.log(totalArr)
 
     return (
         <div className="chart">
