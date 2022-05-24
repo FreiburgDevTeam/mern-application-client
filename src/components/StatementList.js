@@ -74,36 +74,49 @@ const Item = ({ content }) => {
 };
 
 function StatementList() {
+    const [filteredTitle, setFilteredTitle] = useState('');
     const { statements } = useContext(DataContext);
+
+
+    const handleSearchInput = (event) => {
+        setFilteredTitle(event.target.value);
+    };
 
     return (
         <>
             <NavBar />
             <h1>Statement List</h1>
             <LayoutGroup>
-                <form>
-                    <select>
-                        <option>Income</option>
-                        <option>Expense</option>
-                    </select>
-                </form>
+
+                <h3>Search for Title</h3>
+
+                <input
+                    value={filteredTitle}
+                    placeholder="Search Title"
+                    type="text"
+                    onChange={handleSearchInput}
+                />
+
+
                 <div className="StatementList">
                     {
                         statements === null ?
                             <p>Your statements list is empty. Please add a <Link to={"/statements/create"}>New Statement</Link> to continue.<br /></p>
                             :
                             (
-                                <>
-                                    <p>{statements.length} statements found</p>
-                                    <br />
-                                    {statements?.map((item, index) => {
+                                statements
+                                    .filter((statement) => {
+                                        const lowerFilter = filteredTitle.toLowerCase();
+                                        return statement.title.toLowerCase().includes(lowerFilter);
+                                    })
+                                    .map((item, index) => {
                                         return (
-                                            <div key={index} >
+                                            <div key={index}>
                                                 <Item content={item} />
                                             </div>
                                         )
-                                    })}
-                                </>
+                                    })
+
                             )
                     }
                 </div>
