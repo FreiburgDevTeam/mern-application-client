@@ -12,7 +12,7 @@ function EditStatement () {
     const {statementId} = useParams();
    
 
-    const statementEdit = statements.find(statement => statement._id == statementId);    
+    const statementEdit = statements.find(statement => statement._id === statementId);    
    
     const [title, setTitle] = useState(statementEdit.title);
     const [amount, setAmount] = useState(statementEdit.amount);
