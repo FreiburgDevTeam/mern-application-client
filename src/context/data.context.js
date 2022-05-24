@@ -6,7 +6,7 @@ const DataContext = createContext();
 
 
 function DataProviderWrapper(props) {
-    const [statements, setStatements] = useState(null);
+    const [statements, setStatements] = useState([]);
     const { isLoggedIn } = useContext(AuthContext);
 
     useEffect(() => {
