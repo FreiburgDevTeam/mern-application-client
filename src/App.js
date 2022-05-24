@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import EditStatement from './components/EditStatement';
+import ErrorPage from './components/ErrorPage';
 import IsPrivate from './components/IsPrivat';
 import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+      <Route path="*" element={ <ErrorPage /> } /> 
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/' element={<LandingPage />} />
