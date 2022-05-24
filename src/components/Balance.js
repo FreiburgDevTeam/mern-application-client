@@ -18,7 +18,7 @@ function Balance() {
                     (12 * (currentDate.getFullYear() - startDate.getFullYear()))
             }
 
-            // IMCOMES
+            // INCOMES
             // once incomes
             const incomesOnce = [...statements]?.filter(statement => statement.type === "income" && statement.regularity === "once");
             const incomesAmountOnce = incomesOnce.map(statement => statement.amount)
