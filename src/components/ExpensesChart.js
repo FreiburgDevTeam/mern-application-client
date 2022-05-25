@@ -6,19 +6,22 @@ import { DataContext } from "../context/data.context";
 
 function ExpensesChart() {
     const { statements } = useContext(DataContext);
-
+    // console.log(statements)
     const currentDate = new Date();
+    // console.log(currentDate)
     const currentYear = currentDate.getFullYear();
-
+    // console.log(currentYear)
     const [year, setYear] = useState(currentYear);
+    // console.log(year)
     useEffect(()=>{
         // console.log("year inside useEffect:", year);
     }, [year])
 
     const getMonthlyData = (type) => {
 
-        const formattedData = [...statements]?.map(item => {
+        const formattedData = [...statements]?.map((item, i) => {
             const date = new Date(item.startDate);
+            // console.log(date, i)
             return {
                 month: date.getMonth() + 1,
                 year: date.getFullYear(),
@@ -27,12 +30,21 @@ function ExpensesChart() {
                 type: item.type
             }
         })
+        
 
+        const previousYears = (currentYear) => {
+        const filteredMonthly = statements.filter(item => (item.regularity == "monthly" && Number(item.startDate.substring(0,3)) < Number(currentYear)))
+            // return filteredMonthly
+            console.log(filteredMonthly, '<--')
+        }
+        
 
+        console.log(previousYears("2020"))
+        
         const filteredData = formattedData?.filter(item => { 
             // console.log("year:", year);
             // console.log("item.year:", item.year);
-            return item.year === year && item.type === type 
+            return item.year === year && item.type === type
         });
 
         let monthlyResult = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0 };
@@ -46,20 +58,29 @@ function ExpensesChart() {
                     onceResult[item.month] += item.amount;
                 }
             }
-            if (item.regularity === "monthly") {
-                const month = currentDate.getMonth();
-                let currentMonth = month + 1;
 
+            if (item.regularity === "monthly") {
+                previousYears()
+                let month;
+                if (year === currentYear) {
+                     month = currentDate.getMonth(); 
+                } else {
+                     month = 11;
+                }
+                
+                let currentMonth = month + 1;
+                 
                 for (let i = item.month; i <= currentMonth; i++) {
                     monthlyResult[i] += item.amount;
                 }
             }
         });
 
+        // add month
         const result = Object.entries(onceResult).reduce((acc, [key, value]) =>
             ({ ...acc, [key]: (acc[key] || 0) + value })
             , { ...monthlyResult });
-
+            
         const monthlyData = Object.values(result)
         // console.log("monthlyData: ", monthlyData)
         return monthlyData;
