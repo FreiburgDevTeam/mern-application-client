@@ -1,5 +1,5 @@
 import Balance from "./Balance";
-import ExpensesChart from "./ExpensesChart"
+import ExpensesChart from "./ExpensesChart";
 import NavBar from "./NavBar";
 import StatementList from "./StatementList";
 

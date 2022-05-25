@@ -3,6 +3,7 @@ import Spinner from "reactjs-simple-spinner";
 import NavBar from "./NavBar";
 import React, { useContext } from 'react';
 import { AuthContext } from "../context/auth.context";
+import GetMonthlyData from "./GetMonthlyData";
 
 function UserProfile() {
     const { user } = useContext(AuthContext);
@@ -19,6 +20,7 @@ function UserProfile() {
     return (
         <div>
             <NavBar />
+            <GetMonthlyData />
             <h1>Account details</h1>
             {!user
                 ? <Spinner
