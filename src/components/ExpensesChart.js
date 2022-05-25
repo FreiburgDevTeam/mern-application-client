@@ -66,9 +66,8 @@ function ExpensesChart() {
 
         
     }
-    console.log(getMonthlyData("expense"))
+    // console.log(getMonthlyData("expense"))
     // console.log("year: ",year)
-
 
     return (
         <div className="chart">
