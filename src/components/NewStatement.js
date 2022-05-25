@@ -42,7 +42,7 @@ function NewStatement() {
             })
             .catch(e => console.log("error creating statement...", e));
     }
-
+        
     return (
         <div>
             <NavBar/>
@@ -72,9 +72,10 @@ function NewStatement() {
 
                 <label htmlFor="startDate">Start date:</label><br />
                 <input
-                type="date"
+                type="date" 
                 name="startDate"
                 id="startDate"
+                max={new Date().toISOString().split("T")[0]}
                 modifiers={{disabled: { after: new Date() }}}
                 value={startDate}
                 disabled={false}
