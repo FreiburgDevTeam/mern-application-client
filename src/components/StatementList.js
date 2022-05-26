@@ -79,7 +79,7 @@ const Item = ({ content }) => {
                             <TableCell align="right">{content.title}</TableCell>
                             <TableCell align="right">{content.type}</TableCell>
                             <TableCell align="right">{content.regularity}</TableCell>
-                            <TableCell align="right">{content.amount}</TableCell>
+                            <TableCell align="right">{content.amount} €</TableCell>
                             <TableCell align="right">
                             <Button onClick={toggleOpen}>{options}</Button>
                             <Button><Link to={`/statements/${content._id}/edit`}><EditIcon /></Link></Button>

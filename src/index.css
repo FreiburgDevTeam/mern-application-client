@@ -42,7 +42,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(245, 245, 245);
 }
-
+.App {
+  text-align: center;
+}
 .flex-row {
   display: flex;
   flex-wrap: wrap;
@@ -63,9 +65,8 @@ body {
   text-align: center;
 }
 .main-container {
-  position: absolute;
-  right: 0;
   width: calc(100% - 240px);
+  margin: auto;
   padding: 50px;
 }
 .balance {
@@ -115,5 +116,12 @@ body {
 }
 .error-Page a h6 h2{
   font-size:larger;
-  
+} 
+.NavBar {
+  width: 440px;
+
+}
+.active{
+  color: #fff;
+
 }

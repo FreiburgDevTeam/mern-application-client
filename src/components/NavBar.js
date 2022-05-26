@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { NavLink } from "react-router-dom";
 import { Box, Button, Divider, Drawer, Link, List } from "@mui/material";
-import '../index.css';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 function NavBar() {
@@ -13,7 +13,8 @@ function NavBar() {
             PaperProps={{
                 sx: {
                     width: 240,
-            backgroundColor: '#EFE7DA',
+            backgroundColor: 'rgba(0, 12, 15, 0.4)',
+            color: '#ffffff'
                 }
             }}
 
@@ -29,12 +30,7 @@ function NavBar() {
                         <br />
                             <h3>Welcome, {user.username}</h3>
                             <br />
-
-                            <Button onClick={logOutUser} variant="contained" color='primary' >
-                                Logout
-                            </Button>
-
-
+                            <Button onClick={logOutUser}><LogoutIcon/></Button>
                             <Divider
                                 sx={{
                                     borderColor: '#c0c0c0',
@@ -50,11 +46,12 @@ function NavBar() {
                                 justifyContent: 'space-between',
                                 px: 3,
                                 py: '11px',
-                                borderRadius: 1
+                                borderRadius: 1,
+                                color: '#ffffff'
                             }}>
-                                <NavLink to="/dashboard">Dashboard</NavLink> <br />
-                                <NavLink to="/userprofile">User Profile</NavLink> <br />
-                                <NavLink to="/statements">Statements</NavLink> <br />
+                                <NavLink to="/dashboard">Dashboard</NavLink>
+                                <NavLink to="/userprofile">User Profile</NavLink>
+                                <NavLink to="/statements">Statements</NavLink>
                                 <NavLink to="/statements/create">+New</NavLink>
                             </Box>
                         </>
