@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
 import moment from "moment";
-import { Button } from "@mui/material";
-
-
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TableContainer } from "@mui/material";
 
 const Content = ({ content }) => {
     const { updateData } = useContext(DataContext);
@@ -31,15 +29,24 @@ const Content = ({ content }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <div>
-                <p>{content.description}</p>
-                <p>Regularity: {content.regularity}</p>
-                <p>Category: {content.category}</p>
-            </div>
-            <div>
-                <Link to={`/statements/${content._id}/edit`}>Edit</Link><br />
-                <Button onClick={handleDelete}>Delete</Button>
-            </div>
+            <Table>
+                <TableBody>
+                    <TableRow>
+                        <TableCell key={content._id}>
+                            <p>Description: {content.description}</p>
+                            <p>Category: {content.category}</p>
+                        </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <TableCell>
+                            <Button><Link to={`/statements/${content._id}/edit`}>Edit</Link></Button>
+                            <Button onClick={handleDelete}>Delete</Button>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+
         </motion.div>
     );
 };
@@ -53,6 +60,7 @@ const Item = ({ content }) => {
     isOpen ? options = " - Less" : options = "+ More"
 
     return (
+
         <motion.div
             layout
             // title="Click to see more details"
@@ -61,14 +69,18 @@ const Item = ({ content }) => {
             }
         >
             <motion.div className="item" layout>
-                <div className="flex-row">
-                    <div>
-                        <h2>{content.title}</h2>
-                        <h2>{content.amount}</h2>
-                        <p>{formattedDate}</p>
-                    </div>
-                    <Link to="#" onClick={toggleOpen}>{options}</Link><br />
-                </div>
+                <Table >
+                    <TableBody >
+                        <TableRow>
+                            <TableCell>{formattedDate}</TableCell>
+                            <TableCell align="right">{content.title}</TableCell>
+                            <TableCell align="right">{content.type}</TableCell>
+                            <TableCell align="right">{content.regularity}</TableCell>
+                            <TableCell align="right">{content.amount}</TableCell>
+                            <TableCell align="right"><Button onClick={toggleOpen}>{options}</Button></TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </motion.div>
             <AnimatePresence>{isOpen && <Content content={content} />}
             </AnimatePresence>
@@ -86,7 +98,7 @@ function StatementList() {
     };
 
     return (
-        <>
+        <section>
             <NavBar />
             <h1>Statement List</h1>
             <LayoutGroup>
@@ -100,8 +112,19 @@ function StatementList() {
                     onChange={handleSearchInput}
                 />
 
-
-                <div className="StatementList">
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Date</TableCell>
+                            <TableCell align="right">Title</TableCell>
+                            <TableCell align="right">Type</TableCell>
+                            <TableCell align="right">Regularity</TableCell>
+                            <TableCell align="right">Amount</TableCell>
+                            <TableCell align="right">Options</TableCell>
+                        </TableRow>
+                    </TableHead>
+                </Table>
+                <section className="StatementList">
                     {
                         statements === null ?
                             <p>Your statements list is empty. Please add a <Link to={"/statements/create"}>New Statement</Link> to continue.<br /></p>
@@ -114,17 +137,18 @@ function StatementList() {
                                     })
                                     .map((item, index) => {
                                         return (
-                                            <div key={index}>
+                                            <section key={index}>
                                                 <Item content={item} />
-                                            </div>
+                                            </section>
                                         )
                                     })
 
                             )
                     }
-                </div>
+                </section>
             </LayoutGroup>
-        </>
+        </section>
     )
 }
 export default StatementList;
+

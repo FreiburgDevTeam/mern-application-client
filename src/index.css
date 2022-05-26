@@ -61,12 +61,10 @@ code {
 
 .flex-row {
   display: flex;
-  justify-content: center;
 }
 .flex-columm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 #bg {
   position: fixed; 

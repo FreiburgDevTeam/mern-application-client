@@ -17,7 +17,9 @@ function Dashboard() {
                             <Balance />
                             <StatementsChart />
                         </div>
-                        <StatementList />
+                        <div className="statements-container">
+                        <StatementList/>
+                        </div>
                     </div>
                 </div>
             }
