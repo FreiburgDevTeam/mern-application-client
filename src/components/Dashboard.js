@@ -2,13 +2,14 @@ import Balance from "./Balance";
 import NavBar from "./NavBar";
 import StatementList from "./StatementList";
 import StatementsChart from "./SatatementsChart";
+import Title from "./Title";
 
 function Dashboard() {
     return (
         <>
             {
                 <>
-                    <h1>This is Dashboard Component</h1>
+                    <Title>Dashboard</Title>
                     <NavBar />
                     <Balance />
                     <StatementsChart />
