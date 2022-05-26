@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { DataContext } from "../context/data.context";
+import Typography from '@mui/material/Typography';
+import Title from './Title'
+
 
 function Balance() {
     const { statements } = useContext(DataContext);
 
 
     const renderBalance = () => {
+
+        
 
         if (!statements) {
             return 0
@@ -72,12 +77,22 @@ function Balance() {
 
     const balance = renderBalance();
 
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
     return (
-        <>
-            <p>Balance:</p>
-            <h1>{balance}</h1>
-        </>
-    )
-}
+        <div className="balance">
+        <React.Fragment >
+          <Title>Balance</Title>
+          <Typography component="p" variant="h4">
+            {balance}
+          </Typography>
+          <Typography color="text.secondary" sx={{ flex: 1 }}>
+            {date}
+          </Typography>
+        </React.Fragment>
+        </div>
+      );
+    }
 
 export default Balance;
