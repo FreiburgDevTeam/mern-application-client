@@ -4,7 +4,7 @@ import React from 'react';
 
 function Title(props) {
   return (
-    <Typography component="h2" variant="h6" color="primary" gutterBottom>
+    <Typography component="h2" variant="h5" color="primary" gutterBottom>
       {props.children}
     </Typography>
   );

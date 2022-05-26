@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth.context";
 import { NavLink } from "react-router-dom";
 import { Box, Button, Divider, Drawer, Link, List } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
+import Title from "./Title";
 
 
 function NavBar() {
@@ -26,9 +27,9 @@ function NavBar() {
                         :
                         <>
                         <br />
-                        <h1>BudgetManager</h1>
-                        <br />
-                            <h3>Welcome, {user.username}</h3>
+                        <Title>BudgetManager</Title>
+                    
+                            <Title>Welcome, {user.username}</Title>
                             <br />
                             <Button onClick={logOutUser}><LogoutIcon/></Button>
                             <Divider
