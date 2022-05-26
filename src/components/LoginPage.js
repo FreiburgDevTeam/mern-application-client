@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
 import { DataContext } from "../context/data.context";
+import { Button, TextField } from "@mui/material";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -39,8 +40,10 @@ function LoginPage() {
             {errorMessage && <p>{errorMessage}</p>}
 
             <form onSubmit={handleLoginSubmit}>
-                <label>Email:</label>
-                <input
+                <label></label>
+                <TextField
+                    id="outlined-basic"
+                    label="E-Mail Adress"
                     type="email"
                     name="email"
                     value={email}
@@ -48,8 +51,10 @@ function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)} 
                 />
 
-                <br /><label>Password:</label>
-                <input
+                <br /><label></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Password"
                     type="password"
                     name="password"
                     value={password}
@@ -57,10 +62,13 @@ function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                     <br/>
-                <button type="submit">Login</button>
+                <Button 
+                variant="contained"
+                color="primary"
+                type="submit">Login</Button>
             </form>
 
-            <p>Don't have an account? <Link to={"/signup"}> Sign up now</Link></p>
+            <p>Don't have an account? <Link color="primary" to={"/signup"}> Sign up now</Link></p>
            
         </div>
     )

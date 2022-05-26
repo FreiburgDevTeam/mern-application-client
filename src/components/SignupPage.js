@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context"
+import { Avatar, Button, Grid, TextField } from "@mui/material";
 
 
 function SignupPage(props) {
@@ -36,31 +37,39 @@ function SignupPage(props) {
     return (
         <div className="SignupPage">
             <br />
+
             <h1>Signup</h1>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <form onSubmit={handleSignupSubmit}>
-            <label>Name:</label>
-                <input
+            <Grid>
+                <TextField
+                    id="outlined-basic"
+                    label="User"
                     type="text"
                     name="username"
                     value={username}
                     required={true}
-                    onChange={(e) => setUserName(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)} 
                 />
+                </Grid>
                 <br />
-                <label>Email:</label>
-                <input
+                <label></label>
+                <TextField
+                    id="outlined-basic"
+                    label="E-Mail Adress"
                     type="email"
                     name="email"
                     value={email}
-                    required={true}
+                    required
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <br />
-                <label>Password:</label>
-                <input
+                <label></label>
+                <TextField
+                    id="outlined-basic"
+                    label="Password"
                     type="password"
                     name="password"
                     value={password}
@@ -69,7 +78,12 @@ function SignupPage(props) {
                 />
 
 
-                <br/><button type="submit">Sign Up</button>
+                <br/><Button 
+
+                 variant="contained"
+                 color="primary"
+                 type="submit"
+                    >Sign Up</Button>
             </form>
 
             <p>Already have an account? <Link to={"/login"}> Login</Link></p>
