@@ -62,9 +62,8 @@ body {
   min-height: 100%;
 }
 .main-container {
-  position: absolute;
-  right: 0;
   width: calc(100% - 240px);
+  margin: auto;
   padding: 50px;
 }
 .balance {
@@ -98,4 +97,11 @@ body {
  background-color: white;
  border-radius: 6%;
  margin-top: 40px;
+}
+.NavBar {
+  width: 440px;
+
+}
+.active{
+  color: #fff;
 }
