@@ -95,7 +95,7 @@ function SatatementsChart() {
 
     return (
         
-            <div className="container1" >
+            
                 <div className="box1">
                 <Box sx={{ minWidth: 120 }}>
                 <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -142,8 +142,6 @@ function SatatementsChart() {
                     }}
                 />
             </div>
-        </div>
-    
     );
 }
 export default SatatementsChart;

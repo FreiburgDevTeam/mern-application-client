@@ -1,7 +1,7 @@
 import Balance from "./Balance";
 import NavBar from "./NavBar";
 import StatementList from "./StatementList";
-import StatementsChart from "./SatatementsChart";
+import StatementsChart from "./StatementsChart";
 import Title from "./Title";
 
 function Dashboard() {
