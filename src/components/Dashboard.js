@@ -1,7 +1,7 @@
 import Balance from "./Balance";
-import ExpensesChart from "./ExpensesChart";
 import NavBar from "./NavBar";
 import StatementList from "./StatementList";
+import StatementsChart from "./SatatementsChart";
 
 function Dashboard() {
     return (
@@ -11,7 +11,7 @@ function Dashboard() {
                     <h1>This is Dashboard Component</h1>
                     <NavBar />
                     <Balance />
-                    <ExpensesChart />
+                    <StatementsChart />
                     <StatementList />
                 </>
             }
@@ -19,3 +19,4 @@ function Dashboard() {
     )
 }
 export default Dashboard;
+
