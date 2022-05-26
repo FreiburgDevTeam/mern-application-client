@@ -60,5 +60,3 @@ Update your environment variables:
  ## Website
 
  - [Budget-Manager](https://budget-manager-mern-app.netlify.app/)
-
-

@@ -41,7 +41,7 @@ function SignupPage(props) {
 
                 <Typography component="h1" variant="h2">
 
-                    <h1>Welconme to Budget-Manager</h1>
+                    <h3>Welconme to Budget-Manager</h3>
                     <h3>get your finances in order!</h3>
                 </Typography>
                 <div style={{ padding: 50 }}>
@@ -56,7 +56,7 @@ function SignupPage(props) {
                     <Grid>
                         <TextField
                             id="username"
-                            label="User"
+                            label="User-Name"
                             type="text"
                             name="username"
                             value={username}
