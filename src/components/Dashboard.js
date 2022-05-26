@@ -8,13 +8,18 @@ function Dashboard() {
     return (
         <>
             {
-                <>
+                <div className="main-container">
                     <Title>Dashboard</Title>
+                    <br />
                     <NavBar />
-                    <Balance />
-                    <StatementsChart />
-                    <StatementList />
-                </>
+                    <div>
+                        <div className="flex-row">
+                            <Balance />
+                            <StatementsChart />
+                        </div>
+                        <StatementList />
+                    </div>
+                </div>
             }
         </>
     )
