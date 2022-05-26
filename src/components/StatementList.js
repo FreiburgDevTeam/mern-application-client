@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
 import moment from "moment";
+import { Button } from "@mui/material";
+
+
 
 const Content = ({ content }) => {
     const { updateData } = useContext(DataContext);
@@ -35,7 +38,7 @@ const Content = ({ content }) => {
             </div>
             <div>
                 <Link to={`/statements/${content._id}/edit`}>Edit</Link><br />
-                <button onClick={handleDelete}>Delete</button>
+                <Button onClick={handleDelete}>Delete</Button>
             </div>
         </motion.div>
     );
