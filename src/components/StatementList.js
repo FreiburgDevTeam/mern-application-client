@@ -10,6 +10,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import Title from "./Title";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 const Content = ({ content }) => {
     return (
@@ -133,10 +135,10 @@ function StatementList() {
                         </TableRow>
                     </TableHead>
                 </Table>
-                <section className="StatementList">
+                <section className="StatementList"> <br />
                     {
-                        statements === null ?
-                            <p>Your statements list is empty. Please add a <Link to={"/statements/create"}>New Statement</Link> to continue.<br /></p>
+                        statements.length === 0 ?
+                            <Title>Your statements list is empty <SentimentVeryDissatisfiedIcon/> add a <Link to={"/statements/create"}>New Statement</Link></Title>
                             :
                             (
                                 statements
