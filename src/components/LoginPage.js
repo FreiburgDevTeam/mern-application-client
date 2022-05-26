@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"
 import { DataContext } from "../context/data.context";
-import { Button, TextField } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import image from "../img/hexagonbg.jpg"
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -34,43 +35,56 @@ function LoginPage() {
     };
 
     return (
-        <div className="LoginPage"><br />
-            <h1>Login</h1>
+        <>
+            <div id="bg" style={{ backgroundImage: `url(${image})` }}>
+                <div style={{ padding: 50 }}>
 
-            {errorMessage && <p>{errorMessage}</p>}
+                    <Typography component="h1" variant="h2">
 
-            <form onSubmit={handleLoginSubmit}>
-                <label></label>
-                <TextField
-                    id="outlined-basic"
-                    label="E-Mail Adress"
-                    type="email"
-                    name="email"
-                    value={email}
-                    required={true}
-                    onChange={(e) => setEmail(e.target.value)} 
-                />
+                        <h1>Welconme to Budget-Manager</h1>
+                        <h3>get your finances in order!</h3>
+                    </Typography>
+                    <div style={{ padding: 50 }}>
+                        <Typography component="h1" variant="h5">
+                            Login
+                        </Typography>
+                    </div>
+                    {errorMessage && <p>{errorMessage}</p>}
 
-                <br /><label></label>
-                <TextField
-                    id="outlined-basic"
-                    label="Password"
-                    type="password"
-                    name="password"
-                    value={password}
-                    required={true}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                    <br/>
-                <Button 
-                variant="contained"
-                color="primary"
-                type="submit">Login</Button>
-            </form>
-
-            <p>Don't have an account? <Link color="primary" to={"/signup"}> Sign up now</Link></p>
-           
-        </div>
+                    <form onSubmit={handleLoginSubmit}>
+                        <Grid>
+                            <TextField
+                                id="outlined-basic"
+                                label="E-Mail Adress"
+                                type="email"
+                                name="email"
+                                value={email}
+                                required={true}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid><br />
+                            <TextField
+                                id="outlined-basic"
+                                label="Password"
+                                type="password"
+                                name="password"
+                                value={password}
+                                required={true}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Grid><br />
+                        <Grid>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                type="submit">Login</Button>
+                        </Grid><br />
+                    </form>
+                    <p>Don't have an account? <Link color="primary" to={"/signup"}> Sign up now</Link></p>
+                </div>
+            </div>
+        </>
     )
 }
 
