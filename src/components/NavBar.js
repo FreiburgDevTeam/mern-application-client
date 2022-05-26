@@ -10,7 +10,6 @@ function NavBar() {
 
     return (
         <Drawer
-            anchor="left"
             PaperProps={{
                 sx: {
                     width: 240,

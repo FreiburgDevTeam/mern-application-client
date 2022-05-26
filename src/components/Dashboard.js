@@ -8,11 +8,16 @@ function Dashboard() {
         <>
             {
                 <>
-                    <h1>This is Dashboard Component</h1>
-                    <NavBar />
-                    <Balance />
-                    <StatementsChart />
-                    <StatementList />
+                    <div className="flex-row">
+                        <NavBar />
+                        <div className=" main-container">
+                            <div className="flex-row">
+                                <Balance />
+                                <StatementsChart />
+                            </div>
+                            <StatementList />
+                        </div>
+                    </div>
                 </>
             }
         </>
