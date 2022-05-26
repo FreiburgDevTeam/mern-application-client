@@ -59,6 +59,9 @@ body {
   min-width: 100%;
   min-height: 100%;
 }
+.centerSiLo {
+  text-align: center;
+}
 .main-container {
   position: absolute;
   right: 0;
@@ -96,4 +99,21 @@ body {
  background-color: white;
  border-radius: 6%;
  margin-top: 40px;
+}
+.error-Page {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 5%;
+    font-size: xx-large;
+    background-color: rgba(255, 255, 255, 0.466);
+    padding: 15px;
+    text-align: center;
+    border: 5px;
+}
+.error-Page a h6 h2{
+  font-size:larger;
+  
 }

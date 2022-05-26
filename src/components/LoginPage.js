@@ -39,7 +39,7 @@ function LoginPage() {
     return (
         <>
             <div id="bg" style={{ backgroundImage: `url(${image})` }}>
-                <div style={{ padding: 50 }}>
+                <div className="centerSiLo" style={{ padding: 50 }}>
 
                     <Typography component="h1" variant="h2">
 
