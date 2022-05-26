@@ -85,7 +85,7 @@ function Balance() {
        
           <Title>Balance</Title>
           <Typography component="p" variant="h4">
-            {balance}
+            {balance} €
           </Typography>
           <Typography color="text.secondary" sx={{ flex: 1 }}>
             {date}

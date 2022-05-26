@@ -6,6 +6,8 @@ import { DataContext } from "../context/data.context";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import image from "../img/hexagonbg.jpg"
 
+
+
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
