@@ -15,10 +15,11 @@ an overview of your balance at any giving time, a chart to display all the incom
 * JavaScript
 * HTML
 * CSS
+* MUI
+* Chart.js
 
 ## Getting Started
 
-This 
 This repository is for Front-End ( React.js ) only.
 
 ## Install NPM packages
@@ -48,7 +49,7 @@ packages:
 Update your environment variables:
  - REACT_APP_API_URL=
 
- and run the application with: npm start
+ and run the application with: `npm start`
 
 ## Developer-Team
 
