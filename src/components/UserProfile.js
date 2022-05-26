@@ -3,23 +3,31 @@ import Spinner from "reactjs-simple-spinner";
 import NavBar from "./NavBar";
 import React, { useContext } from 'react';
 import { AuthContext } from "../context/auth.context";
+import UserAvatar from "../img/user-avatar.svg";
+import Title from "./Title";
 
 function UserProfile() {
     const { user } = useContext(AuthContext);
+    console.log (user)
 
     const userDetails = () => {
         return (
             <div>
-                <p>Username: {user.username}</p>
-                <p>E-Mail: {user.email}</p>
+            <Title>Account Details</Title>
+            <br />
+            <img src={UserAvatar} alt="user" /><br /><br />
+            <p>username:</p>
+                <h2>{user.username}</h2>
+                <br />
+                <p>email:</p>
+                <h2>{user.email}</h2>
             </div>
         )
     }
 
     return (
-        <div>
+        <div className="Box">
             <NavBar />
-            <h1>Account details</h1>
             {!user
                 ? <Spinner
                     size="big"

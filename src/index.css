@@ -28,7 +28,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: 10px;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -127,4 +127,16 @@ body {
 }
 .user-avatar{
   max-width: 100px;
+}
+.Box {
+  margin: auto;
+  width: max-content;
+  height: max-content;
+  padding: 50px;
+  background-color: var(--quat-opacity);
+  color: var(--primary);
+  border-radius: 20px;
+}
+.Box img {
+  width: 200px;
 }
