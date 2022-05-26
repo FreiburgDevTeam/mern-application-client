@@ -7,7 +7,6 @@
   --quaternary: #edf6f9;
 }
 
-
 /* RESET */
 
 *{
@@ -44,26 +43,13 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-.body-text {
-  margin-left: 150px;
-  font-size: 18px;
-}
-
-.App {
-  text-align: center;
-}
-
 .flex-row {
   display: flex;
+  flex-wrap: wrap;
 }
 .flex-columm {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 }
 #bg {
@@ -77,6 +63,7 @@ code {
   position: absolute;
   right: 0;
   width: calc(100% - 240px);
+  padding: 50px;
 }
 .balance {
   margin: auto;
@@ -91,13 +78,9 @@ code {
   border-radius: 4%;
  
 }
-.container1 {
- display: flex;
- justify-content: right;
-}
+
 .box1 {
   height: 400px;
   width: 1000px;
   margin-right: 90px;
-
 }

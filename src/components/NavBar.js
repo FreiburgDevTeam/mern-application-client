@@ -14,7 +14,6 @@ function NavBar() {
                 sx: {
                     width: 240,
             backgroundColor: '#EFE7DA',
-            zIndex: 1,
                 }
             }}
 

@@ -5,23 +5,13 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
 import moment from "moment";
-import { Button, Table, TableBody, TableCell, TableRow, TableHead, TableContainer } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TableContainer, IconButton} from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const Content = ({ content }) => {
-    const { updateData } = useContext(DataContext);
-    const statementId = content._id;
-
-    const handleDelete = () => {
-        const storedToken = localStorage.getItem('authToken');
-        //send delete request with token to API
-        axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
-            { headers: { Authorization: `Bearer ${storedToken}` } })
-            .then(() => {
-                updateData();
-            })
-            .catch((err) => console.log(err));
-    };
-
     return (
         <motion.div
             layout
@@ -29,6 +19,7 @@ const Content = ({ content }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
+        <TableContainer>
             <Table>
                 <TableBody>
                     <TableRow>
@@ -40,12 +31,11 @@ const Content = ({ content }) => {
 
                     <TableRow>
                         <TableCell>
-                            <Button><Link to={`/statements/${content._id}/edit`}>Edit</Link></Button>
-                            <Button onClick={handleDelete}>Delete</Button>
                         </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
+            </TableContainer>
 
         </motion.div>
     );
@@ -53,22 +43,35 @@ const Content = ({ content }) => {
 
 const Item = ({ content }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { updateData } = useContext(DataContext);
+    const statementId = content._id;
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+    const answer = window.confirm("Are you sure to delete this statement?");
+    if (answer) {
+        const storedToken = localStorage.getItem('authToken');
+        //send delete request with token to API
+        axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
+            { headers: { Authorization: `Bearer ${storedToken}` } })
+            .then(() => {
+                updateData();
+            })
+            .catch((err) => console.log(err));
+    } 
+    };
+
     const toggleOpen = () => setIsOpen(!isOpen);
     const startDate = new Date(content.startDate);
     const formattedDate = moment(startDate).format('DD/MM/YYYY');
     let options;
-    isOpen ? options = " - Less" : options = "+ More"
+    isOpen ? options = <ExpandLessIcon/>: options = <ExpandMoreIcon/>
 
     return (
 
-        <motion.div
-            layout
-            // title="Click to see more details"
-            // onClick={toggleOpen}
-            initial={{ borderRadius: [25] }
-            }
-        >
-            <motion.div className="item" layout>
+        <motion.div>
+            <motion.div layout>
+            <TableContainer>
                 <Table >
                     <TableBody >
                         <TableRow>
@@ -77,10 +80,15 @@ const Item = ({ content }) => {
                             <TableCell align="right">{content.type}</TableCell>
                             <TableCell align="right">{content.regularity}</TableCell>
                             <TableCell align="right">{content.amount}</TableCell>
-                            <TableCell align="right"><Button onClick={toggleOpen}>{options}</Button></TableCell>
+                            <TableCell align="right">
+                            <Button onClick={toggleOpen}>{options}</Button>
+                            <Button><Link to={`/statements/${content._id}/edit`}><EditIcon /></Link></Button>
+                            <Button onClick={handleDelete}><DeleteIcon /></Button>
+                            </TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
+                </TableContainer>
             </motion.div>
             <AnimatePresence>{isOpen && <Content content={content} />}
             </AnimatePresence>
@@ -98,10 +106,11 @@ function StatementList() {
     };
 
     return (
-        <section>
+        <section >
             <NavBar />
+            <div>
             <h1>Statement List</h1>
-            <LayoutGroup>
+            <LayoutGroup >
 
                 <h3>Search for Title</h3>
 
@@ -147,8 +156,8 @@ function StatementList() {
                     }
                 </section>
             </LayoutGroup>
+            </div>
         </section>
     )
 }
 export default StatementList;
-

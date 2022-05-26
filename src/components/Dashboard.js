@@ -8,19 +8,17 @@ function Dashboard() {
     return (
         <>
             {
-                <div className="main-container">
-                    <Title>Dashboard</Title>
-                    <br />
+                <div>
                     <NavBar />
-                    <div>
+                    <section className="main-container">
+                    <Title>Dashboard</Title>
                         <div className="flex-row">
                             <Balance />
                             <StatementsChart />
                         </div>
-                        <div className="statements-container">
-                        <StatementList/>
-                        </div>
-                    </div>
+                        <StatementList />
+                    </section>
+
                 </div>
             }
         </>
