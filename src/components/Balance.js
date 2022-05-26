@@ -82,7 +82,7 @@ function Balance() {
 
     return (
         <div className="balance">
-        <React.Fragment >
+       
           <Title>Balance</Title>
           <Typography component="p" variant="h4">
             {balance}
@@ -90,7 +90,7 @@ function Balance() {
           <Typography color="text.secondary" sx={{ flex: 1 }}>
             {date}
           </Typography>
-        </React.Fragment>
+    
         </div>
       );
     }

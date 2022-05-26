@@ -3,6 +3,11 @@ import { Chart } from "chart.js/auto";
 import { useContext, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { DataContext } from "../context/data.context";
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 function SatatementsChart() {
     const { statements, updateData} = useContext(DataContext);
@@ -89,38 +94,56 @@ function SatatementsChart() {
     }
 
     return (
-        <div className="chart">
-            <h1>Expenses Chart</h1> <br />
-            <div style={{ maxWidth: "800px" }}>
-                <label htmlFor="year">Select a year:</label><br />
-                <select id="year" value={year} onChange={(e) => { setYear(Number(e.target.value)) }}>
-                    <option defaultValue value={currentYear}>{currentYear}</option>
-                    <option value={currentYear - 1}>{currentYear - 1}</option>
-                </select>
+        
+            <div className="container1" >
+                <div className="box1">
+                <Box sx={{ minWidth: 120 }}>
+                <FormControl sx={{ m: 1, minWidth: 80 }}>
+                <InputLabel id="demo-simple-select-label">Year</InputLabel>
+                
+                <Select 
+                labelId="demo-simple-select-label"
+                id="demo-simple-select" 
+                value={year} 
+                label="Year"
+                onChange={(e) => { setYear(Number(e.target.value)) }}
+                >
+         
+                    <MenuItem defaultValue value={currentYear}>{currentYear}</MenuItem>
+                    <MenuItem value={currentYear - 1}>{currentYear - 1}</MenuItem>
+                </Select>
+                </FormControl>
+                </Box>
 
-                <Bar
+                <Bar id="BarChart"
                     data={{
-                        labels: ["Jan", "Feb", "Mar", "Apri", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        labels: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [
                             {
-                                label: "Expenses",
+                                
+                                label: "total Expenses",
                                 data: getMonthlyData("expense"),
-                                backgroundColor: ["aqua"],
+                                backgroundColor: ["#FC354C"],
                                 borderColor: ["black"],
-                                borderWidth: 2,
+                                borderWidth: 1,
+                                borderRadius: 6,
+                                hoverBackgroundColor: "#021B79"
                             },
                             {
-                                label: "Income",
+                                label: "total Income",
                                 data: getMonthlyData("income"),
-                                backgroundColor: ["brown"],
+                                backgroundColor: ["#0ABFBC"],
                                 borderColor: ["black"],
-                                borderWidth: 2,
+                                borderWidth: 1,
+                                borderRadius: 6,
+                                hoverBackgroundColor: "#021B79"
                             },
                         ],
                     }}
                 />
             </div>
         </div>
+    
     );
 }
 export default SatatementsChart;
