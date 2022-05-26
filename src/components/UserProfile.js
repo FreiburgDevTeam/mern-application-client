@@ -26,7 +26,7 @@ function UserProfile() {
     }
 
     return (
-        <div className="Box">
+        <div className="user-profile">
             <NavBar />
             {!user
                 ? <Spinner

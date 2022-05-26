@@ -9,7 +9,7 @@ function Dashboard() {
             {
                 <div>
                     <section className="main-container">
-                    <Title>Dashboard</Title>
+                    <Title>Dashboard</Title><br />
                         <div className="flex-row">
                             <Balance />
                             <StatementsChart />

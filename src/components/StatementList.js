@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import axios from "axios";
 import moment from "moment";
-import { Button, Table, TableBody, TableCell, TableRow, TableHead, TableContainer, IconButton} from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableRow, TableHead, TableContainer, IconButton } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -21,22 +21,22 @@ const Content = ({ content }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-        <TableContainer>
-            <Table>
-                <TableBody>
-                    <TableRow>
-                        <TableCell key={content._id}>
-                            <p>Description: {content.description}</p>
-                            <p>Category: {content.category}</p>
-                        </TableCell>
-                    </TableRow>
+            <TableContainer>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell key={content._id}>
+                                <p>Description: {content.description}</p>
+                                <p>Category: {content.category}</p>
+                            </TableCell>
+                        </TableRow>
 
-                    <TableRow>
-                        <TableCell>
-                        </TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
+                        <TableRow>
+                            <TableCell>
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </TableContainer>
 
         </motion.div>
@@ -50,46 +50,46 @@ const Item = ({ content }) => {
 
     const handleDelete = (e) => {
         e.preventDefault();
-    const answer = window.confirm("Are you sure to delete this statement?");
-    if (answer) {
-        const storedToken = localStorage.getItem('authToken');
-        //send delete request with token to API
-        axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
-            { headers: { Authorization: `Bearer ${storedToken}` } })
-            .then(() => {
-                updateData();
-            })
-            .catch((err) => console.log(err));
-    } 
+        const answer = window.confirm("Are you sure to delete this statement?");
+        if (answer) {
+            const storedToken = localStorage.getItem('authToken');
+            //send delete request with token to API
+            axios.delete(`${process.env.REACT_APP_API_URL}/statements/${statementId}`,
+                { headers: { Authorization: `Bearer ${storedToken}` } })
+                .then(() => {
+                    updateData();
+                })
+                .catch((err) => console.log(err));
+        }
     };
 
     const toggleOpen = () => setIsOpen(!isOpen);
     const startDate = new Date(content.startDate);
     const formattedDate = moment(startDate).format('DD/MM/YYYY');
     let options;
-    isOpen ? options = <ExpandLessIcon/>: options = <ExpandMoreIcon/>
+    isOpen ? options = <ExpandLessIcon /> : options = <ExpandMoreIcon />
 
     return (
 
         <motion.div>
             <motion.div layout>
-            <TableContainer>
-                <Table >
-                    <TableBody >
-                        <TableRow>
-                            <TableCell>{formattedDate}</TableCell>
-                            <TableCell align="right">{content.title}</TableCell>
-                            <TableCell align="right">{content.type}</TableCell>
-                            <TableCell align="right">{content.regularity}</TableCell>
-                            <TableCell align="right">{content.amount} €</TableCell>
-                            <TableCell align="right">
-                            <Button onClick={toggleOpen}>{options}</Button>
-                            <Button><Link to={`/statements/${content._id}/edit`}><EditIcon /></Link></Button>
-                            <Button onClick={handleDelete}><DeleteIcon /></Button>
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
+                <TableContainer>
+                    <Table >
+                        <TableBody >
+                            <TableRow>
+                                <TableCell>{formattedDate}</TableCell>
+                                <TableCell align="right">{content.title}</TableCell>
+                                <TableCell align="right">{content.type}</TableCell>
+                                <TableCell align="right">{content.regularity}</TableCell>
+                                <TableCell align="right">{content.amount} €</TableCell>
+                                <TableCell align="right">
+                                    <Button onClick={toggleOpen}>{options}</Button>
+                                    <Button><Link to={`/statements/${content._id}/edit`}><EditIcon /></Link></Button>
+                                    <Button onClick={handleDelete}><DeleteIcon /></Button>
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
                 </TableContainer>
             </motion.div>
             <AnimatePresence>{isOpen && <Content content={content} />}
@@ -110,51 +110,52 @@ function StatementList() {
     return (
         <section >
             <NavBar />
-            <div>
-            <Title>Statement List</Title>
-            <LayoutGroup >
-                <input
-                    value={filteredTitle}
-                    placeholder="Search Title"
-                    type="text"
-                    onChange={handleSearchInput}
-                />
+            <div className="Box">
+                <Title>Statement List</Title><br />
+                <LayoutGroup >
+                    <input
+                        className="search-bar"
+                        value={filteredTitle}
+                        placeholder="Search Title"
+                        type="text"
+                        onChange={handleSearchInput}
+                    />
 
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Date</TableCell>
-                            <TableCell align="right">Title</TableCell>
-                            <TableCell align="right">Type</TableCell>
-                            <TableCell align="right">Regularity</TableCell>
-                            <TableCell align="right">Amount</TableCell>
-                            <TableCell align="right">Options</TableCell>
-                        </TableRow>
-                    </TableHead>
-                </Table>
-                <section className="StatementList"> <br />
-                    {
-                        statements.length === 0 ?
-                            <Title>Your statements list is empty <SentimentVeryDissatisfiedIcon/> add a <Link to={"/statements/create"}>New Statement</Link></Title>
-                            :
-                            (
-                                statements
-                                    .filter((statement) => {
-                                        const lowerFilter = filteredTitle.toLowerCase();
-                                        return statement.title.toLowerCase().includes(lowerFilter);
-                                    })
-                                    .map((item, index) => {
-                                        return (
-                                            <section key={index}>
-                                                <Item content={item} />
-                                            </section>
-                                        )
-                                    })
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Date</TableCell>
+                                <TableCell align="right">Title</TableCell>
+                                <TableCell align="right">Type</TableCell>
+                                <TableCell align="right">Regularity</TableCell>
+                                <TableCell align="right">Amount</TableCell>
+                                <TableCell align="right">Options</TableCell>
+                            </TableRow>
+                        </TableHead>
+                    </Table>
+                    <section className="StatementList"> <br />
+                        {
+                            statements.length === 0 ?
+                                <Title>Your statements list is empty <SentimentVeryDissatisfiedIcon />, add a <Link to={"/statements/create"}>New Statement</Link></Title>
+                                :
+                                (
+                                    statements
+                                        .filter((statement) => {
+                                            const lowerFilter = filteredTitle.toLowerCase();
+                                            return statement.title.toLowerCase().includes(lowerFilter);
+                                        })
+                                        .map((item, index) => {
+                                            return (
+                                                <section key={index}>
+                                                    <Item content={item} />
+                                                </section>
+                                            )
+                                        })
 
-                            )
-                    }
-                </section>
-            </LayoutGroup>
+                                )
+                        }
+                    </section>
+                </LayoutGroup>
             </div>
         </section>
     )
