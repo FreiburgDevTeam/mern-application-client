@@ -75,7 +75,6 @@ function SatatementsChart() {
                 // }
                 
                 for (let i = item.month; i <= 12; i++) {
-                    console.log("item.amount", item.amount)
                     monthlyResult[i] += (item.amount + getPreviousAmount(type));
                 }
             }
