@@ -69,3 +69,8 @@ code {
   min-width: 100%;
   min-height: 100%;
 }
+.main-container {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 240px);
+}
