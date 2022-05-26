@@ -79,10 +79,25 @@ code {
   width: calc(100% - 240px);
 }
 .balance {
-  margin-left: 300px;
-  max-width:150px;
+  margin: auto;
+  max-width:180px;
   min-width: 100px !important;
-  padding: 10px;
   background-color: white;
   border-radius: 6%;
+}
+
+#BarChart {
+  background-color: white;
+  border-radius: 4%;
+ 
+}
+.container1 {
+ display: flex;
+ justify-content: right;
+}
+.box1 {
+  height: 400px;
+  width: 1000px;
+  margin-right: 90px;
+
 }
