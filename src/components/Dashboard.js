@@ -9,7 +9,6 @@ function Dashboard() {
         <>
             {
                 <div>
-                    <NavBar />
                     <section className="main-container">
                     <Title>Dashboard</Title>
                         <div className="flex-row">

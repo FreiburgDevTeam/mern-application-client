@@ -125,3 +125,6 @@ body {
   color: #fff;
 
 }
+.user-avatar{
+  max-width: 100px;
+}

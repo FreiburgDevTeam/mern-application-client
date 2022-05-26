@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Box, Button, Divider, Drawer, Link, List } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Title from "./Title";
+import UserAvatar from "../img/user-avatar.svg"
 
 
 function NavBar() {
@@ -15,7 +16,8 @@ function NavBar() {
                 sx: {
                     width: 240,
             backgroundColor: 'rgba(0, 12, 15, 0.4)',
-            color: '#ffffff'
+            color: '#ffffff',
+            overflow: 'hidden',
                 }
             }}
 
@@ -31,6 +33,7 @@ function NavBar() {
                     
                             <Title>Welcome, {user.username}</Title>
                             <br />
+                            <img className="user-avatar" src={UserAvatar} alt="user" /><br />
                             <Button onClick={logOutUser}><LogoutIcon/></Button>
                             <Divider
                                 sx={{
@@ -44,9 +47,7 @@ function NavBar() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 height: '100%',
-                                justifyContent: 'space-between',
-                                px: 3,
-                                py: '11px',
+                                justifyContent: 'space-evenly',
                                 borderRadius: 1,
                                 color: '#ffffff'
                             }}>
