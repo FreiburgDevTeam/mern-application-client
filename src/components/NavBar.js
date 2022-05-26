@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { NavLink } from "react-router-dom";
-import { Box, Button, Divider, Drawer, Link, List } from "@mui/material";
+import { Box, Button, Divider, Drawer, List, MenuItem, MenuList } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Title from "./Title";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import UserAvatar from "../img/user-avatar.svg"
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ListIcon from '@mui/icons-material/List';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 
 function NavBar() {
@@ -15,9 +19,9 @@ function NavBar() {
             PaperProps={{
                 sx: {
                     width: 240,
-            backgroundColor: 'rgba(0, 12, 15, 0.4)',
-            color: '#ffffff',
-            overflow: 'hidden',
+                    backgroundColor: 'rgba(0, 12, 15, 0.4)',
+                    color: '#ffffff',
+                    overflow: 'hidden',
                 }
             }}
 
@@ -28,13 +32,13 @@ function NavBar() {
                         ? <p>Loading...</p>
                         :
                         <>
-                        <br />
-                        <Title>BudgetManager</Title>
-                    
+                            <br />
+                            <Title>BudgetManager</Title>
+
                             <Title>Welcome, {user.username}</Title>
                             <br />
                             <img className="user-avatar" src={UserAvatar} alt="user" /><br />
-                            <Button onClick={logOutUser}><LogoutIcon/></Button>
+                            <Button onClick={logOutUser}><LogoutIcon /></Button>
                             <Divider
                                 sx={{
                                     borderColor: '#c0c0c0',
@@ -43,18 +47,17 @@ function NavBar() {
                             />
                             <Box sx={{
                                 alignItems: 'center',
-                                cursor: 'pointer',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                height: '100%',
                                 justifyContent: 'space-evenly',
                                 borderRadius: 1,
-                                color: '#ffffff'
                             }}>
-                                <NavLink to="/dashboard">Dashboard</NavLink>
-                                <NavLink to="/userprofile">User Profile</NavLink>
-                                <NavLink to="/statements">Statements</NavLink>
-                                <NavLink to="/statements/create">+New</NavLink>
+                                <MenuList>
+                                    <MenuItem><DashboardIcon/><NavLink to="/dashboard">Dashboard</NavLink></MenuItem><br />
+                                    <MenuItem><AccountBoxIcon/><NavLink to="/userprofile">User Profile</NavLink></MenuItem><br />
+                                    <MenuItem><ListIcon/><NavLink to="/statements">Statements</NavLink></MenuItem><br />
+                                    <MenuItem><AddBoxIcon/><NavLink to="/statements/create">New</NavLink></MenuItem>
+                                </MenuList>
                             </Box>
                         </>
                 }

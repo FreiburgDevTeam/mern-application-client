@@ -111,11 +111,8 @@ function StatementList() {
         <section >
             <NavBar />
             <div>
-            <h1>Statement List</h1>
+            <Title>Statement List</Title>
             <LayoutGroup >
-
-                <h3>Search for Title</h3>
-
                 <input
                     value={filteredTitle}
                     placeholder="Search Title"

@@ -117,14 +117,7 @@ body {
 .error-Page a h6 h2{
   font-size:larger;
 } 
-.NavBar {
-  width: 440px;
 
-}
-.active{
-  color: #fff;
-
-}
 .user-avatar{
   max-width: 100px;
 }
