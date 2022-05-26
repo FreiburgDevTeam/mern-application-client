@@ -41,6 +41,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(245, 245, 245);
 }
 
 code {
@@ -73,4 +74,12 @@ code {
   position: absolute;
   right: 0;
   width: calc(100% - 240px);
+}
+.balance {
+  margin-left: 300px;
+  max-width:150px;
+  min-width: 100px !important;
+  padding: 10px;
+  background-color: white;
+  border-radius: 6%;
 }
