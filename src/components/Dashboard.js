@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import Balance from "./Balance";
 import StatementList from "./StatementList";
 import StatementsChart from "./StatementsChart";
@@ -8,15 +9,12 @@ function Dashboard() {
         <>
             {
                 <div>
-                    <section className="main-container">
                     <Title>Dashboard</Title><br />
-                        <div className="flex-row">
+                        <div className="flex-row head-container">
                             <Balance />
                             <StatementsChart />
                         </div>
                         <StatementList />
-                    </section>
-
                 </div>
             }
         </>

@@ -66,8 +66,12 @@ body {
 }
 .main-container {
   width: calc(100% - 240px);
+  position:absolute;
+  right: 0;
+}
+.head-container {
+  width: calc(100% - 240px);
   margin: auto;
-  padding: 50px;
 }
 .balance {
   margin: auto;

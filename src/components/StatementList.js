@@ -110,7 +110,7 @@ function StatementList() {
     return (
         <section >
             <NavBar />
-            <div className="Box">
+            <div className="Box main-container">
                 <Title>Statement List</Title><br />
                 <LayoutGroup >
                     <input
