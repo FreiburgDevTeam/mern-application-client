@@ -11,8 +11,8 @@ function ErrorPage () {
         <div className="error-Page" >
             
       <Title >Oops!</Title>
-            <h2>404 - PAGE NOT FOUND</h2> 
-            <h6>We are sorry, but the Page you requestet was not found </h6> <br />
+            <h5>404 - PAGE NOT FOUND</h5> 
+            <h6>We are sorry, but the page you requestet was not found. </h6> <br />
             <Link 
         component="button"
         variant="body2"
