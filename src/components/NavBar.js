@@ -58,10 +58,10 @@ function NavBar() {
                                 borderRadius: 1,
                             }}>
                                 <MenuList>
-                                    <MenuItem><DashboardIcon/><NavLink to="/dashboard"><Title>Dashboard</Title></NavLink></MenuItem><br />
-                                    <MenuItem><AccountBoxIcon/><NavLink to="/userprofile"><Title>User Profile</Title></NavLink></MenuItem><br />
-                                    <MenuItem><ListIcon/><NavLink to="/statements"><Title>Statements</Title></NavLink></MenuItem><br />
-                                    <MenuItem><AddBoxIcon/><NavLink to="/statements/create"><Title>New</Title></NavLink></MenuItem>
+                                    <MenuItem><DashboardIcon/><NavLink style={{ textDecoration: 'none' }}  to="/dashboard"><Title>Dashboard</Title></NavLink></MenuItem><br />
+                                    <MenuItem><AccountBoxIcon/><NavLink style={{ textDecoration: 'none' }} to="/userprofile"><Title>User Profile</Title></NavLink></MenuItem><br />
+                                    <MenuItem><ListIcon/><NavLink style={{ textDecoration: 'none' }} to="/statements"><Title>Statements</Title></NavLink></MenuItem><br />
+                                    <MenuItem><AddBoxIcon/><NavLink style={{ textDecoration: 'none' }} to="/statements/create"><Title>New</Title></NavLink></MenuItem>
                                 </MenuList>
                             </Box>
                         </>
