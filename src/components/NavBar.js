@@ -58,10 +58,10 @@ function NavBar() {
                                 borderRadius: 1,
                             }}>
                                 <MenuList>
-                                    <MenuItem><DashboardIcon/><NavLink to="/dashboard">Dashboard</NavLink></MenuItem><br />
-                                    <MenuItem><AccountBoxIcon/><NavLink to="/userprofile">User Profile</NavLink></MenuItem><br />
-                                    <MenuItem><ListIcon/><NavLink to="/statements">Statements</NavLink></MenuItem><br />
-                                    <MenuItem><AddBoxIcon/><NavLink to="/statements/create">New</NavLink></MenuItem>
+                                    <MenuItem><DashboardIcon/><NavLink to="/dashboard"><Title>Dashboard</Title></NavLink></MenuItem><br />
+                                    <MenuItem><AccountBoxIcon/><NavLink to="/userprofile"><Title>User Profile</Title></NavLink></MenuItem><br />
+                                    <MenuItem><ListIcon/><NavLink to="/statements"><Title>Statements</Title></NavLink></MenuItem><br />
+                                    <MenuItem><AddBoxIcon/><NavLink to="/statements/create"><Title>New</Title></NavLink></MenuItem>
                                 </MenuList>
                             </Box>
                         </>
