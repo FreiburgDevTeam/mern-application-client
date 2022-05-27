@@ -13,6 +13,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import Title from "./Title";
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
+
 const Content = ({ content }) => {
     return (
         <motion.div
@@ -50,7 +51,7 @@ const Item = ({ content }) => {
 
     const handleDelete = (e) => {
         e.preventDefault();
-        const answer = window.confirm("Are you sure to delete this statement?");
+        const answer = window.confirm("Are you sure you want to delete this Statement?");
         if (answer) {
             const storedToken = localStorage.getItem('authToken');
             //send delete request with token to API

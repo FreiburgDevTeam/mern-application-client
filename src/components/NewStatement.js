@@ -91,9 +91,8 @@ function NewStatement() {
                         type="date"
                         name="startDate"
                         id="startDate"
-                        min="2021-01-01"
+                        InputProps={{inputProps: { min: "2021-01-01", max: new Date().toISOString().split("T")[0]} }}
                         required={true}
-                        max={new Date().toISOString().split("T")[0]}
                         modifiers={{ disabled: { after: new Date() } }}
                         value={startDate}
                         disabled={false}
