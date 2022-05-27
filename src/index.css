@@ -40,7 +40,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(245, 245, 245);
+  background: linear-gradient(160deg, rgba(160, 177, 175, 0.747) 0%, rgb(255, 255, 255) 100%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height:100%;
 }
 .App {
   text-align: center;
