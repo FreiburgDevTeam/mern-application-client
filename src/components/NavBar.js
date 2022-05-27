@@ -9,7 +9,7 @@ import UserAvatar from "../img/user-avatar.svg"
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ListIcon from '@mui/icons-material/List';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-
+import Logo from '../img/Logo.png'
 
 function NavBar() {
     const { logOutUser, user } = useContext(AuthContext);
@@ -33,10 +33,15 @@ function NavBar() {
                         :
                         <>
                             <br />
-                            <Title>BudgetManager</Title>
-
-                            <Title>Welcome, {user.username}</Title>
+                            <div>
+                                <img className="logoImg" src={Logo} />
+                            </div>
+                            <h1 className="logo">BudgetManager</h1>
                             <br />
+                            <div className="welcome">
+                            <h1>Welcome, {user.username}</h1>
+                            <br />
+                            </div>
                             <img className="user-avatar" src={UserAvatar} alt="user" /><br />
                             <Button onClick={logOutUser}><LogoutIcon /></Button>
                             <Divider

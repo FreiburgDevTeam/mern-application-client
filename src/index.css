@@ -1,4 +1,4 @@
-/* COLORS */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@1&family=Roboto+Mono:wght@100&display=swap');
 
 :root {
   --primary: #1A8589;
@@ -80,8 +80,8 @@ body {
 }
 .balance {
   margin: auto;
-  max-width:180px;
-  min-width: 100px !important;
+  max-width:400px;
+  min-width: 300px !important;
   background-color: white;
   border-radius: 6%;
   padding: 50px;
@@ -164,4 +164,19 @@ margin: auto;
   position: relative;
   height: 0;
   right: -360px;
+}
+.logo {
+  font-family: 'IM Fell DW Pica', serif;
+  color: black;
+  font-size:xx-large;
+}
+.welcome {
+  color: black;
+}
+.logoImg {
+  width: 60px !important;
+  height: auto;
+  
+  
+
 }
