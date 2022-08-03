@@ -43,7 +43,7 @@ function LoginPage() {
 
                     <Typography component="h1" variant="h2">
 
-                        <h3>Welconme to Budget-Manager</h3>
+                        <h3>Welcome to Budget-Manager</h3>
                         <h3>get your finances in order!</h3>
                     </Typography>
                     <div style={{ padding: 50 }}>
